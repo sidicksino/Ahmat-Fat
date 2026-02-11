@@ -206,19 +206,37 @@
     </section>
 
     <section class="features">
-        <div class="card">
-            <h3>Hyper Fast</h3>
-            <p>Engineered for speed with optimized query performance and lightweight response structures.</p>
-        </div>
-        <div class="card">
-            <h3>Secure Core</h3>
-            <p>Enterprise-grade security protocols integrated directly into the foundational layer.</p>
-        </div>
-        <div class="card">
-            <h3>Scalable AI</h3>
-            <p>Ready to integrate with advanced AI models and scale horizontally across global nodes.</p>
-        </div>
+        {% if crypto_data %}
+            {% for asset in crypto_data %}
+            <div class="card">
+                <h3>{{ asset.name }} ({{ asset.symbol }})</h3>
+                <p style="font-size: 1.5rem; color: #fff; font-weight: bold;">${{ asset.priceUsd|floatformat:2 }}</p>
+                <p class="{% if '-' in asset.changePercent24Hr %}negative{% else %}positive{% endif %}">
+                    {{ asset.changePercent24Hr|floatformat:2 }}% (24h)
+                </p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <!-- Fallback if API fails -->
+            <div class="card">
+                <h3>Hyper Fast</h3>
+                <p>Engineered for speed with optimized query performance and lightweight response structures.</p>
+            </div>
+            <div class="card">
+                <h3>Secure Core</h3>
+                <p>Enterprise-grade security protocols integrated directly into the foundational layer.</p>
+            </div>
+            <div class="card">
+                <h3>Scalable AI</h3>
+                <p>Ready to integrate with advanced AI models and scale horizontally across global nodes.</p>
+            </div>
+        {% endif %}
     </section>
+
+    <style>
+        .positive { color: #00ff88; }
+        .negative { color: #ff4d4d; }
+    </style>
 
     <footer>
         &copy; 2026 Ahmat-Fat Inc. All rights reserved.
