@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmat-Fat | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050014;
+            --text-color: #ffffff;
+            --primary-color: #bc13fe;
+            --secondary-color: #ffd700;
+            --accent-color: #ff0055;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Background Animation */
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+            opacity: 0.15;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 12s infinite ease-in-out;
+        }
+        .blob-1 { top: -100px; right: -100px; }
+        .blob-2 { bottom: -100px; left: -100px; background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%); animation-delay: 6s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-30px, 30px); }
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #e0e0e0);
+            background-clip: text;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero span {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            background-clip: text;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .cta-btn {
+            padding: 1rem 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--bg-color);
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(188, 19, 254, 0.4);
+        }
+
+        /* Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 5rem 5%;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary-color);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .card p {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--glass-border);
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow blob-1"></div>
+    <div class="bg-glow blob-2"></div>
+
+    <nav>
+        <div class="logo">AHMAT-FAT / MYAPP</div>
+        <div class="nav-links">
+            <a href="#">Dashboard</a>
+            <a href="#">Analytics</a>
+            <a href="#">Team</a>
+            <a href="#">Settings</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Your Data. <br> <span>Reimagined.</span></h1>
+        <p>Real-time analytics, powerful insights, and a seamless interface designed for the future of business.</p>
+        <a href="#" class="cta-btn">View Dashboard</a>
+    </section>
+
+    <section class="features">
+        <div class="card">
+            <h3>Real-Time Sync</h3>
+            <p>Data updates instantly across all devices with our WebSocket-powered engine.</p>
+        </div>
+        <div class="card">
+            <h3>AI Insights</h3>
+            <p>Automated trend analysis powered by our advanced machine learning models.</p>
+        </div>
+        <div class="card">
+            <h3>Secure Access</h3>
+            <p>End-to-end encryption ensures your business intelligence stays private.</p>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Ahmat-Fat Inc. All rights reserved.
+    </footer>
+
+</body>
+</html>
